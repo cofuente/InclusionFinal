@@ -11,8 +11,9 @@ const Form = require('./Form')
  *    BlogPost.belongsTo(Admin)
  */
 Application.belongsTo(Applicant)
-// Form.hasOne(Applicant)
+Form.hasOne(Applicant)
 Comment.belongsTo(Admin)
+Application.hasMany(Comment)
 /**
  * We'll export all of our models here, so that any time a module needs a model,
  * we can just require it from 'db/models'
