@@ -13,6 +13,7 @@ const Application = db.define(
     }
   },
   {
+    // Not sure if this will work just yet
     scopes: {
       populated: () => ({
         include: [{model: db.model('applicant')}]
