@@ -11,25 +11,23 @@ const Form = db.define('form', {
   textInput: {
     // should probably update this to whatever field we decide corresponds on the front end
     type: Sequelize.STRING,
-    allowNull: false,
-    validate: {notEmpty: true}
+    allowNull: true
   },
-  testArea: {
+  textArea: {
     // should probably update this to whatever field we decide corresponds on the front end
     type: Sequelize.TEXT,
-    allowNull: false,
+    allowNull: true,
     validate: {notEmpty: true}
   },
   checkBox: {
     // should probably update this to whatever field we decide corresponds on the front end, maybe like 'by checking this box I verify all is true, etc'
     type: Sequelize.BOOLEAN,
-    defaultValue: true
+    defaultValue: false
   },
   date: {
     // should probably update this to whatever field we decide corresponds on the front end
     type: Sequelize.DATEONLY,
-    allowNull: false,
-    validate: {notEmpty: true}
+    allowNull: true
   }
 })
 
