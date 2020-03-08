@@ -5,8 +5,7 @@ const Comment = db.define('comment', {
   text: {
     type: Sequelize.TEXT,
     validate: {
-      notEmpty: true,
-      isAlphanumeric: true // will only allow alphanumeric characters, so "_abc" will fail
+      notEmpty: true
     }
   }
 })
