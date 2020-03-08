@@ -11,21 +11,21 @@ describe('Admin model', () => {
 
   describe('instanceMethods', () => {
     describe('correctPassword', () => {
-      let cody
+      let fizal
 
       beforeEach(async () => {
-        cody = await Admin.create({
-          email: 'cody@puppybook.com',
-          password: 'bones'
+        fizal = await Admin.create({
+          name: 'Fizal',
+          password: 'qwerty123'
         })
       })
 
       it('returns true if the password is correct', () => {
-        expect(cody.correctPassword('bones')).to.be.equal(true)
+        expect(fizal.correctPassword('qwerty123')).to.be.equal(true)
       })
 
       it('returns false if the password is incorrect', () => {
-        expect(cody.correctPassword('bonez')).to.be.equal(false)
+        expect(fizal.correctPassword('bonez')).to.be.equal(false)
       })
     }) // end describe('correctPassword')
   }) // end describe('instanceMethods')
