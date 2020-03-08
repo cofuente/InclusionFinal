@@ -15,3 +15,12 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.post('/', async (req, res, next) => {
+  try {
+    const newAdmin = await Admin.create(req.body)
+    res.json(newAdmin)
+  } catch (err) {
+    next(err)
+  }
+})
