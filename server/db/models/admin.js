@@ -6,7 +6,8 @@ const Admin = db.define('admin', {
   name: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
+    validate: {notEmpty: true}
   },
   password: {
     type: Sequelize.STRING,

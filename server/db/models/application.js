@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Applicant = db.define('applicant', {
+const Application = db.define('application', {
   status: {
     type: Sequelize.STRING,
     defaultValue: 'UNDER_REVIEW',
@@ -11,4 +11,4 @@ const Applicant = db.define('applicant', {
   }
 })
 
-module.exports = Applicant
+module.exports = Application

@@ -1,8 +1,8 @@
-const Admin = require('./admin')
-const Applicant = require('./applicant')
-// const Application = require('./application')
-// const Form = require('./form')
-// const Comment = require('./comment')
+const Admin = require('./Admin')
+const Applicant = require('./Applicant')
+const Application = require('./Application')
+const Comment = require('./Comment')
+const Form = require('./Form')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -10,7 +10,9 @@ const Applicant = require('./applicant')
  *
  *    BlogPost.belongsTo(Admin)
  */
-
+Application.belongsTo(Applicant)
+// Form.hasOne(Applicant)
+Comment.belongsTo(Admin)
 /**
  * We'll export all of our models here, so that any time a module needs a model,
  * we can just require it from 'db/models'
@@ -19,8 +21,8 @@ const Applicant = require('./applicant')
  */
 module.exports = {
   Admin,
-  Applicant
-  // Application,
-  // Form,
-  // Comment,
+  Applicant,
+  Application,
+  Comment,
+  Form
 }
