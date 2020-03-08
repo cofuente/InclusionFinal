@@ -1,4 +1,8 @@
 const Admin = require('./admin')
+const Applicant = require('./applicant')
+// const Application = require('./application')
+// const Form = require('./form')
+// const Comment = require('./comment')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -14,5 +18,9 @@ const Admin = require('./admin')
  * instead of: const Admin = require('../db/models/user')
  */
 module.exports = {
-  Admin
+  Admin,
+  Applicant
+  // Application,
+  // Form,
+  // Comment,
 }
