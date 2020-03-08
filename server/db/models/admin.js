@@ -62,6 +62,6 @@ const setSaltAndPassword = admin => {
 
 Admin.beforeCreate(setSaltAndPassword)
 Admin.beforeUpdate(setSaltAndPassword)
-Admin.beforeBulkCreate(users => {
-  users.forEach(setSaltAndPassword)
+Admin.beforeBulkCreate(admins => {
+  admins.forEach(setSaltAndPassword)
 })
