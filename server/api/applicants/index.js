@@ -4,8 +4,10 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    const forms = await Applicant.findAll()
-    res.json(forms)
+    const applicants = await Applicant.findAll({
+      attributes: ['name']
+    })
+    res.json(applicants)
   } catch (err) {
     next(err)
   }
