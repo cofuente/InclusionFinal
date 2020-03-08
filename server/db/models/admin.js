@@ -23,9 +23,6 @@ const Admin = db.define('admin', {
     get() {
       return () => this.getDataValue('salt')
     }
-  },
-  googleId: {
-    type: Sequelize.STRING
   }
 })
 
