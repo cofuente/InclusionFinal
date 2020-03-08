@@ -11,6 +11,7 @@ const Applicant = db.define(
       validate: {notEmpty: true}
     },
     email: {
+      // maybe consider making this a get from the associated formId?
       type: Sequelize.STRING,
       unique: true,
       allowNull: false,
