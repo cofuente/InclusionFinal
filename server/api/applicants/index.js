@@ -12,3 +12,12 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.post('/', async (req, res, next) => {
+  try {
+    const newApplicant = await Applicant.create(req.body)
+    res.json(newApplicant)
+  } catch (err) {
+    next(err)
+  }
+})
