@@ -26,7 +26,7 @@ router.get('/:uniqueFormURL', async (req, res, next) => {
 
 /* UPDATE an individual Form, will require uniqueFormURL, no authorization required */
 
-/* Create a new form, will require uniqueFormURL */
+/* Create a new form, will require uniqueFormURL, and cohortId */
 router.post('/', async (req, res, next) => {
   try {
     const newForm = await Form.create(req.body)
@@ -37,3 +37,5 @@ router.post('/', async (req, res, next) => {
 })
 
 /* Delete an existing form, will require formId should also delete related applicant and application*/
+
+/* Delete all forms related to a cohort, will require cohortId */
