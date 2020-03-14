@@ -2,6 +2,7 @@ const router = require('express').Router()
 const {Admin} = require('../../db/models')
 module.exports = router
 
+/*  Get all existing Admins */
 router.get('/', async (req, res, next) => {
   try {
     const admins = await Admin.findAll({
@@ -15,3 +16,15 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+/*  Create a new Admin, will require name and password */
+router.post('/', async (req, res, next) => {
+  try {
+    const newAdmin = await Admin.create(req.body)
+    res.json(newAdmin)
+  } catch (err) {
+    next(err)
+  }
+})
+
+/*  Delete an Admin, make sure this deletes all their comments */
