@@ -17,6 +17,20 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+/* This is what the signup auth route looked like, will likely emmulate this logic in admin creation */
+// router.post('/signup', async (req, res, next) => {
+//   try {
+//     const admin = await Admin.create(req.body)
+//     req.login(admin, err => (err ? next(err) : res.json(admin)))
+//   } catch (err) {
+//     if (err.name === 'SequelizeUniqueConstraintError') {
+//       res.status(401).send('Admin already exists')
+//     } else {
+//       next(err)
+//     }
+//   }
+// })
+
 /*  Create a new Admin, will require name and password */
 router.post('/', async (req, res, next) => {
   try {

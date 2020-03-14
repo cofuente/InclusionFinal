@@ -19,19 +19,6 @@ router.post('/login', async (req, res, next) => {
   }
 })
 
-router.post('/signup', async (req, res, next) => {
-  try {
-    const admin = await Admin.create(req.body)
-    req.login(admin, err => (err ? next(err) : res.json(admin)))
-  } catch (err) {
-    if (err.name === 'SequelizeUniqueConstraintError') {
-      res.status(401).send('Admin already exists')
-    } else {
-      next(err)
-    }
-  }
-})
-
 router.post('/logout', (req, res) => {
   req.logout()
   req.session.destroy()
