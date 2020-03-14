@@ -10,3 +10,12 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.post('/', async (req, res, next) => {
+  try {
+    const newForm = await Form.create(req.body)
+    res.json(newForm)
+  } catch (err) {
+    next(err)
+  }
+})
