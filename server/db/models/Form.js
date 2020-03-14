@@ -10,7 +10,7 @@ const Form = db.define('form', {
   },
   cohortId: {
     // is an integer where the first 2 numbers indicate the year and the last 2 are either the spring or fall. covers up to year 2022
-    type: Sequelize.STRING,
+    type: Sequelize.INTEGER,
     allowNull: false,
     defaultValue: 2002,
     validate: {
