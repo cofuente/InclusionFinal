@@ -21,7 +21,8 @@ async function seed() {
 
   const forms = await Promise.all([
     Form.create({
-      uniqueFormURL: 'fhkfhjdfhthisshouldbeauniquerandomizedstringsomehow'
+      uniqueFormURL: 'fhkfhjdfhthisshouldbeauniquerandomizedstringsomehow',
+      cohortId: 2102
     }),
     Form.create({
       uniqueFormURL: 'fhuerandomizedstringsomehow',
@@ -29,14 +30,16 @@ async function seed() {
         'This will probably be the unique name field, or maybe an email field. If we decide to got with email we should make sure to update it in the model',
       textArea: 'Daaaaang this is the longest essay ever.',
       checkBox: true,
-      date: '2020-10-01'
+      date: '2020-10-01',
+      cohortId: 2010
     }),
     Form.create({
       uniqueFormURL: 'fhkfhjdfhtomehow',
       textInput: "I'm more and more inclined to have this be an email field",
       textArea: 'Daaaaang this is the second longest essay ever.',
       checkBox: true,
-      date: '2020-04-01'
+      date: '2020-04-01',
+      cohortId: 2010
     })
   ])
   console.log(`seeded ${forms.length} forms`)

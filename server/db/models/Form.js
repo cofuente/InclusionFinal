@@ -8,6 +8,16 @@ const Form = db.define('form', {
     isUnique: true,
     validate: {notEmpty: true}
   },
+  cohortId: {
+    // is an integer where the first 2 numbers indicate the year and the last 2 are either the spring or fall. covers up to year 2022
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    defaultValue: 2002,
+    validate: {
+      notEmpty: true,
+      isIn: [[2002, 2010, 2102, 2110, 2202, 2210]]
+    }
+  },
   textInput: {
     // should probably update this to whatever field we decide corresponds on the front end
     type: Sequelize.STRING,
