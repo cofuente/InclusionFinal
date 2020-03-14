@@ -2,7 +2,6 @@ const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
 const compression = require('compression')
-// ---> This was to remove Sessions <---
 const session = require('express-session')
 const passport = require('passport')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
@@ -15,7 +14,6 @@ module.exports = app
 
 // This is a global Mocha hook, used for resource cleanup.
 // Otherwise, Mocha v4+ never quits after tests.
-// ---> This was to remove Sessions <---
 if (process.env.NODE_ENV === 'test') {
   after('close the session store', () => sessionStore.stopExpiringSessions())
 }
@@ -55,7 +53,6 @@ const createApp = () => {
   app.use(compression())
 
   // session middleware with passport
-  // ---> This was to remove Sessions <---
   app.use(
     session({
       secret: process.env.SESSION_SECRET || 'my best friend is Cody',
@@ -112,7 +109,6 @@ const startListening = () => {
 const syncDb = () => db.sync()
 
 async function bootApp() {
-  // ---> This was to remove Sessions <---
   await sessionStore.sync()
   await syncDb()
   await createApp()
