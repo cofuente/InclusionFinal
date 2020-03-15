@@ -5,5 +5,6 @@
  */
 export {default as Navbar} from './navbar'
 export {default as Landing} from './landing'
+export {default as Fallback} from './fallback'
 export {default as UserHome} from './user-home'
 export {Login} from './auth-form'
