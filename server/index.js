@@ -6,6 +6,7 @@ const session = require('express-session')
 const passport = require('passport')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./db')
+const {Admin} = require('./db/models')
 const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
@@ -33,7 +34,7 @@ passport.serializeUser((admin, done) => done(null, admin.id))
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const admin = await db.models.admin.findByPk(id)
+    const admin = await Admin.findByPk(id)
     done(null, admin)
   } catch (err) {
     done(err)
