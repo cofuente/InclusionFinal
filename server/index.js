@@ -29,18 +29,6 @@ if (process.env.NODE_ENV === 'test') {
  */
 if (process.env.NODE_ENV !== 'production') require('../secrets')
 
-// passport registration
-passport.serializeUser((admin, done) => done(null, admin.id))
-
-passport.deserializeUser(async (id, done) => {
-  try {
-    const admin = await Admin.findByPk(id)
-    done(null, admin)
-  } catch (err) {
-    done(err)
-  }
-})
-
 const createApp = () => {
   // logging middleware
   app.use(morgan('dev'))
@@ -63,6 +51,18 @@ const createApp = () => {
   )
   app.use(passport.initialize())
   app.use(passport.session())
+
+  // passport registration
+  passport.serializeUser((admin, done) => done(null, admin.id))
+
+  passport.deserializeUser(async (id, done) => {
+    try {
+      const admin = await Admin.findByPk(id)
+      done(null, admin)
+    } catch (err) {
+      done(err)
+    }
+  })
 
   // auth and api routes
   app.use('/auth', require('./auth'))
