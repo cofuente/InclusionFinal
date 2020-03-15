@@ -37,3 +37,14 @@ router.post('/', async (req, res, next) => {
 })
 
 /*  Delete an Applicant, will require applicantId, should also delete Application and related Form */
+router.delete('/:applicantId', async (req, res, next) => {
+  try {
+    const {applicantId} = req.params
+    const applicant = await Applicant.findByPk(applicantId)
+    const removeApplicant = await applicant.destroy()
+
+    res.status(204).json(removeApplicant)
+  } catch (error) {
+    next(error)
+  }
+})
