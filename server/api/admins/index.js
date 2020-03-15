@@ -28,3 +28,14 @@ router.post('/', async (req, res, next) => {
 })
 
 /*  Delete an Admin, make sure this deletes all their comments */
+router.delete('/:adminId', async (req, res, next) => {
+  try {
+    const {adminId} = req.params
+    const admin = await Admin.findByPk(adminId)
+    const removeAdmin = await admin.destroy()
+
+    res.status(204).json(removeAdmin)
+  } catch (error) {
+    next(error)
+  }
+})
