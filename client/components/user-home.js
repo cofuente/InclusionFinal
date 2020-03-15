@@ -11,6 +11,7 @@ export const UserHome = props => {
   return (
     <div>
       <h3>Welcome, {name}</h3>
+      <h2>This is the admin's unique home component.</h2>
     </div>
   )
 }
