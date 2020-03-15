@@ -63,6 +63,11 @@ const createApp = () => {
       done(err)
     }
   })
+  // additional logging of session user id
+  app.use((req, res, next) => {
+    if (req.user) console.log('SESSION USER:', req.user && req.user.id)
+    next()
+  })
 
   // auth and api routes
   app.use('/auth', require('./auth'))
