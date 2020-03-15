@@ -48,7 +48,7 @@ const createApp = () => {
       resave: false,
       saveUninitialized: true
     })
-  )
+  ) // this gives us req.session
   app.use(passport.initialize())
   app.use(passport.session())
 
