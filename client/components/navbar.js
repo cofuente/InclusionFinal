@@ -1,31 +1,52 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom' // consider using NavLink instead?
 import {logout} from '../store'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>EXCLUSION</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login for admins</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
-  </div>
-)
+class Navbar extends React.Component {
+  constructor(props) {
+    super(props)
+    this.renderLogin = this.renderLogin.bind(this)
+    this.renderLogout = this.renderLogout.bind(this)
+  }
+
+  render() {
+    const {isLoggedIn, handleClick} = this.props
+    return (
+      <div>
+        <Link to="/">
+          <h1>EXCLUSION</h1>
+        </Link>
+        <nav>
+          {isLoggedIn ? this.renderLogout(handleClick) : this.renderLogin()}
+        </nav>
+        <hr />
+      </div>
+    )
+  }
+
+  renderLogin() {
+    return (
+      <div>
+        {/* The navbar will show these links when an admin is not logged in */}
+        <Link to="/login">Login for admins</Link>
+      </div>
+    )
+  }
+
+  renderLogout(handleClick) {
+    return (
+      <div>
+        {/* The navbar will show these links when an admin is logged in */}
+        <Link to="/home">Home</Link>
+        <a href="#" onClick={handleClick}>
+          Logout
+        </a>
+      </div>
+    )
+  }
+}
 
 /**
  * CONTAINER
