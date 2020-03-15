@@ -29,7 +29,6 @@ if (process.env.NODE_ENV === 'test') {
 if (process.env.NODE_ENV !== 'production') require('../secrets')
 
 // passport registration
-// ---> This was to remove Sessions <---
 passport.serializeUser((admin, done) => done(null, admin.id))
 
 passport.deserializeUser(async (id, done) => {
