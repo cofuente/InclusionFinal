@@ -2,6 +2,18 @@ const router = require('express').Router()
 const {Application, Applicant, Form} = require('../../db/models')
 module.exports = router
 
+/* Route Authorization */
+router.use((req, res, next) => {
+  let error
+  if (!req.user) {
+    error = new Error(
+      'Unauthorized API Request. You must be logged in as an admin to access this data.'
+    )
+    error.status = 401
+  }
+  next(error)
+})
+
 /* Get a single application, will require applicationId */
 router.get('/:applicationId', async (req, res, next) => {
   try {

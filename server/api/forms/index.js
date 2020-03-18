@@ -25,9 +25,28 @@ router.get('/:uniqueFormURL', async (req, res, next) => {
 })
 
 /* UPDATE an individual Form, will require uniqueFormURL, no authorization required */
+router.put('/', async (req, res, next) => {
+  if (!req.user) {
+    res.json({
+      status: 'error',
+      message:
+        'Unauthorized API Request. You must be logged in as an admin to access this data.'
+    })
+    
+  }
+  // still requires more logic in here
+})
 
 /* Create a new form, will require uniqueFormURL, and cohortId */
 router.post('/', async (req, res, next) => {
+  if (!req.user) {
+    res.json({
+      status: 'error',
+      message:
+        'Unauthorized API Request. You must be logged in as an admin to access this data.'
+    })
+    return
+  }
   try {
     const newForm = await Form.create(req.body)
     res.json(newForm)
@@ -37,5 +56,14 @@ router.post('/', async (req, res, next) => {
 })
 
 /* Delete an existing form, will require formId should also delete related applicant and application*/
-
-/* Delete all forms related to a cohort, will require cohortId */
+router.delete('/', async (req, res, next) => {
+  if (!req.user) {
+    res.json({
+      status: 'error',
+      message:
+        'Unauthorized API Request. You must be logged in as an admin to access this data.'
+    })
+    
+  }
+  // still requires more logic in here
+})
